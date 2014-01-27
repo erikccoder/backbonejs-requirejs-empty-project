@@ -1,0 +1,13 @@
+# html5 pushstate (history) support:
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Map resources to development
+    RewriteRule ^.*js/(.*)$ js/$1 [NC,L]
+    RewriteRule ^.*css/(.*)$ css/$1 [NC,L]
+    RewriteRule ^.*img/(.*)$ img/$1 [NC,L]
+
+    RewriteCond %{REQUEST_FILENAME} !\.(min\.js|js|min\.css|css|gif|jpg|jpeg|png|ico|swf|pdf|html|php|json)$
+    RewriteCond %{REQUEST_URI} !^index
+    RewriteRule (.*) index.html [L]
+</ifModule>
